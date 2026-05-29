@@ -1,207 +1,250 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridge-Lab Consulting | Under Construction</title>
-    <meta name="description" content="Bridge-Lab Consulting - Website Under Construction">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-900">
+<meta charset="UTF-8" />
+<title>Biotech知识库</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #d9d3c5;
+    font-family: 'ZCOOL KuaiLe', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start;
+    padding: 40px 20px;
+    gap: 35px;
+  }
+  .poster {
+    width: 1080px; height: 1080px;
+    position: relative; background: #f5ecd9;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+  }
+  .poster::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.4; mix-blend-mode: multiply;
+    pointer-events: none; z-index: 10;
+  }
+  .content {
+    position: relative; z-index: 2;
+    height: 100%; padding: 60px 55px 55px;
+    display: flex; flex-direction: column; align-items: center;
+  }
 
-    <!-- Main Content -->
-    <div class="min-h-screen gradient-bg flex items-center justify-center px-8">
-        <div class="text-center text-white max-w-2xl mx-auto">
-            <h1 class="text-2xl md:text-3xl font-semibold mb-8 text-slate-300">BRIDGE<span class="text-blue-400">-LAB</span> CONSULTING</h1>
-            
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
-                Under Construction
-            </h2>
-            
-            <p class="text-xl text-slate-300 mb-10 leading-relaxed">
-                For inquiries, please contact directly:
-            </p>
-            
-            <a href="mailto:cheng.g@bridgelabconsulting.com" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition shadow-lg">
-                cheng.g@bridgelabconsulting.com
-            </a>
-        </div>
+  .title-wrap { text-align: center; position: relative; padding: 0 30px; }
+  .title-en {
+    font-family: 'Ma Shan Zheng', cursive; font-weight: 400;
+    font-size: 115px; color: #1a1a1a; line-height: 0.95;
+    display: inline-block; transform: rotate(-2.5deg);
+    position: relative; margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+  .title-en::after {
+    content: ''; position: absolute;
+    left: -8px; right: -8px; bottom: 12px; height: 16px;
+    background: rgba(214, 48, 49, 0.55); z-index: -1;
+    transform: skew(-3deg) rotate(-1deg); border-radius: 4px;
+  }
+  .title-cn {
+    font-family: 'ZCOOL KuaiLe', cursive; font-size: 108px;
+    color: #1a1a1a; line-height: 1.05; display: block;
+    transform: rotate(0.8deg);
+    text-shadow: 4px 4px 0 rgba(214, 48, 49, 0.18), -2px 2px 0 rgba(0,0,0,0.04);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+
+  .star { position: absolute; color: #d63031; font-family: serif; line-height: 1; z-index: 5; }
+  .star.s1 { top: -15px; right: 75px; transform: rotate(15deg); font-size: 42px; }
+  .star.s2 { top: 120px; left: 25px; transform: rotate(-12deg); font-size: 36px; }
+  .star.s3 { top: 75px; right: 25px; transform: rotate(20deg); font-size: 30px; color: #1a1a1a; }
+
+  .subtitle-pill {
+    margin-top: 28px; position: relative;
+    display: inline-block; transform: rotate(-0.8deg);
+  }
+  .subtitle-pill-svg {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; z-index: 1;
+  }
+  .subtitle-pill-text {
+    position: relative; font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 36px; color: #1a1a1a;
+    padding: 16px 50px; z-index: 2; letter-spacing: 0.02em;
+  }
+
+  .grid {
+    margin-top: 45px; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  .card {
+    position: relative; min-height: 225px;
+    padding: 40px 28px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .card-bg {
+    position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px;
+    z-index: 1; overflow: visible;
+  }
+  .card-content { position: relative; z-index: 2; }
+  .card:nth-child(1) { transform: rotate(-1.8deg); }
+  .card:nth-child(2) { transform: rotate(1.5deg); }
+  .card:nth-child(3) { transform: rotate(1.2deg); }
+  .card:nth-child(4) { transform: rotate(-1.4deg); }
+  .card .keyword {
+    font-family: 'ZCOOL KuaiLe', cursive; font-size: 42px;
+    color: #d63031; line-height: 1.15; margin-bottom: 10px;
+    letter-spacing: 0.01em; white-space: nowrap;
+  }
+  .card .label {
+    font-family: 'ZCOOL KuaiLe', cursive; font-size: 50px;
+    color: #1a1a1a; line-height: 1.15; letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .card-doodle {
+    position: absolute; z-index: 3; color: #d63031;
+    font-family: serif; font-size: 30px;
+    top: 16px; right: 24px; transform: rotate(15deg);
+  }
+
+  /* QR Code section */
+  .qr-card {
+    width: 680px; max-width: 100%;
+    position: relative;
+    padding: 55px 50px 50px;
+    display: flex; flex-direction: column; align-items: center;
+    transform: rotate(0.6deg);
+  }
+  .qr-card-bg {
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    z-index: 1;
+  }
+  .qr-card-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+    width: 100%;
+  }
+  .qr-instruction {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 36px; color: #1a1a1a;
+    line-height: 1.5; margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .qr-arrow {
+    display: block; font-size: 52px;
+    color: #d63031; margin-top: 10px;
+    font-family: serif; line-height: 1;
+  }
+  .qr-image {
+    width: 440px; max-width: 100%; height: auto;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <filter id="rough1"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="6"/></filter>
+    <filter id="rough2"><feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="2" seed="7" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="5"/></filter>
+    <filter id="rough3"><feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="11" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="7"/></filter>
+    <filter id="rough4"><feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="2" seed="15" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="6"/></filter>
+    <filter id="roughPill"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="t"/><feDisplacementMap in="SourceGraphic" in2="t" scale="3"/></filter>
+  </defs>
+</svg>
+
+<div class="poster" id="poster">
+  <div class="content">
+    <div class="title-wrap">
+      <span class="star s1">✦</span>
+      <span class="star s2">✧</span>
+      <span class="star s3">✦</span>
+      <div class="title-en">连桥居士</div>
+      <div class="title-cn">Biotech知识库</div>
     </div>
 
-    <!-- Footer -->
-    <footer class="py-8 text-center text-gray-400 text-xs bg-slate-900">
-        &copy; 2025 Bridge-Lab Consulting. All rights reserved.
-    </footer>
+    <div class="subtitle-pill">
+      <svg class="subtitle-pill-svg" viewBox="0 0 700 100" preserveAspectRatio="none">
+        <rect x="6" y="6" width="688" height="88" rx="48"
+              fill="#ede0c5" stroke="#1a1a1a" stroke-width="4"
+              filter="url(#roughPill)" />
+      </svg>
+      <div class="subtitle-pill-text">看懂Biotech，不用PhD</div>
+    </div>
 
+    <div class="grid">
+      <div class="card">
+        <svg class="card-bg" viewBox="0 0 500 320" preserveAspectRatio="none">
+          <rect x="14" y="14" width="472" height="292" rx="22" fill="#fdf7e8" stroke="#1a1a1a" stroke-width="5" filter="url(#rough1)" />
+        </svg>
+        <div class="card-doodle">★</div>
+        <div class="card-content">
+          <div class="keyword">10年BD</div>
+          <div class="label">工作经验知识分享</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <svg class="card-bg" viewBox="0 0 500 320" preserveAspectRatio="none">
+          <rect x="14" y="14" width="472" height="292" rx="22" fill="#fdf7e8" stroke="#1a1a1a" stroke-width="5" filter="url(#rough2)" />
+        </svg>
+        <div class="card-doodle">★</div>
+        <div class="card-content">
+          <div class="keyword">真实案例</div>
+          <div class="label">深度拆解</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <svg class="card-bg" viewBox="0 0 500 320" preserveAspectRatio="none">
+          <rect x="14" y="14" width="472" height="292" rx="22" fill="#fdf7e8" stroke="#1a1a1a" stroke-width="5" filter="url(#rough3)" />
+        </svg>
+        <div class="card-doodle">★</div>
+        <div class="card-content">
+          <div class="keyword">定期总结+BD表格</div>
+          <div class="label">保持更新</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <svg class="card-bg" viewBox="0 0 500 320" preserveAspectRatio="none">
+          <rect x="14" y="14" width="472" height="292" rx="22" fill="#fdf7e8" stroke="#1a1a1a" stroke-width="5" filter="url(#rough4)" />
+        </svg>
+        <div class="card-doodle">★</div>
+        <div class="card-content">
+          <div class="keyword">行业八卦</div>
+          <div class="label">有趣又有深度</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QR code section, displayed below the poster on the deployed page -->
+<div class="qr-card" id="qr-card">
+  <svg class="qr-card-bg" viewBox="0 0 680 750" preserveAspectRatio="none">
+    <rect x="14" y="14" width="652" height="722" rx="22"
+          fill="#fdf7e8" stroke="#1a1a1a" stroke-width="5"
+          filter="url(#rough2)" />
+  </svg>
+  <div class="qr-card-content">
+    <div class="qr-instruction">
+      下单后请添加下方小助手微信<br/>
+      并分享你的订单号码
+      <span class="qr-arrow">↓</span>
+    </div>
+    <img src="qrcode.jpg" alt="微信二维码 - 桥助手" class="qr-image">
+  </div>
+</div>
 </body>
 </html>
-
-<!-- 
-=========================================================================================
-ORIGINAL WEBSITE CONTENT - BACKUP FOR FUTURE USE
-=========================================================================================
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridge-Lab Consulting | China CRO Outsourcing Expert | Ex-WuXi DEL Specialist</title>
-    <meta name="description" content="Independent consultant helping US/EU early-stage biotechs outsource early drug discovery and preclinical R&D (target-to-hit, DEL, hit-to-lead, SBDD, FBDD) to cost-effective, high-quality Chinese CROs. Former WuXi AppTec Project Manager (China & Germany).">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        html { scroll-behavior: smooth; }
-        nav { height: 80px; }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-900">
-
-    <nav class="fixed top-0 left-0 right-0 z-10 flex justify-between items-center px-8 py-4 bg-white shadow-sm h-20">
-        <div class="text-xl font-bold tracking-tight text-slate-800">BRIDGE<span class="text-blue-600">-LAB</span> CONSULTING</div>
-        <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-            <a href="#services" class="hover:text-blue-600 transition">Services</a>
-            <a href="#why-me" class="hover:text-blue-600 transition">Why Me</a>
-            <a href="#about" class="hover:text-blue-600 transition">About</a>
-            <a href="#contact" class="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-            Contact Me
-            </a>
-        </div>
-        <div class="md:hidden">
-            <button class="text-gray-600 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-    </nav>
-
-    <header class="gradient-bg text-white py-24 px-8 text-center pt-32">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-2xl md:text-3xl font-semibold mb-8 text-slate-300">BRIDGE-LAB CONSULTING</h1>
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
-                Accelerating Early Drug Discovery for Early-Stage Biotechs
-            </h2>
-            <p class="text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-                I help US-based early-stage biotechs streamline their early drug discovery and preclinical R&D by connecting innovative pipelines with high-efficiency Chinese and global CROs.<br>
-                With hands-on project management experience across the full target-to-hit and hit-to-lead continuum — including DNA-Encoded Library (DEL) screening, protein production & crystallography-enabled SBDD, fragment-based drug discovery (FBDD), virtual screening, and medicinal chemistry optimization — I ensure clients achieve significant cost savings while maintaining the highest technical and data quality standards from their CRO partners.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
-                <span class="bg-slate-700/50 px-4 py-2 rounded-full text-sm border border-slate-600">Stop Paying the "Global Tax" </span>
-                <span class="bg-slate-700/50 px-4 py-2 rounded-full text-sm border border-slate-600">Unbiased Multi-Vendor Quoting</span>
-                <span class="bg-slate-700/50 px-4 py-2 rounded-full text-sm border border-slate-600">Active Project Management & Transparency</span>
-            </div>
-            <a href="#contact" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition shadow-lg">
-                Send Your Inquiry & Get Initial Quote 
-            </a>
-        </div>
-    </header>
-
-    <section id="why-me" class="py-20 px-8 bg-white">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">Why My Clients Work With Me</h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Insider Knowledge of Top CROs</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Having managed 100+ DEL screening quotations and project workflows at WuXi AppTec, I understand the internal pricing logic, SOW structures, and technical boundaries of major service providers.
-                    </p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Cost & Protocol Optimization</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        I help clients navigate vendor selection (e.g., WuXi vs. HitGen vs. Viva), benchmarking costs, and refining screening protocols to avoid common pitfalls in protein preparation and data interpretation.
-                    </p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Operational Agility</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        I provide real-time project oversight on the ground while being able to enter into US-protected legal agreements. This significantly reduces communication lag and compliance risks.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-20 px-8 bg-slate-50">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12">Core Expertise</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-center h-32">
-                    <h4 class="font-semibold mb-2">Target-to-Hit Identification</h4>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-center h-32">
-                    <h4 class="font-semibold mb-2">Hit-to-Lead Workflows</h4>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-center h-32">
-                    <h4 class="font-semibold mb-2">DEL Screening Strategy</h4>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-center h-32">
-                    <h4 class="font-semibold mb-2">Multi-CRO Vendor Management & Coordination</h4>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-center h-32">
-                    <h4 class="font-semibold mb-2">Cost Optimization & Contract Negotiation</h4>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-center h-32">
-                    <h4 class="font-semibold mb-2">Cross-border Project Oversight</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 bg-white px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">About Me</h2>
-            <p class="text-gray-700 mb-8 leading-relaxed max-w-3xl mx-auto">
-                Former Project Manager at WuXi AppTec (China & Germany), with over 4 years managing complex early discovery outsourcing projects for global clients.<br><br>
-                I am passionate about helping small, fast-moving teams move faster and spend smarter. Whether you need help selecting the optimal CRO for protein crystallography, DEL screening, or hit-to-lead chemistry — or simply want a reliable partner to oversee execution in China — let's connect.
-            </p>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 px-8 text-center bg-slate-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4">Ready to Streamline Your Early Discovery Outsourcing?</h2>
-            <p class="text-gray-600 mb-10 max-w-2xl mx-auto">Send your inquiry to receive an initial quote and vendor comparison.</p>
-        
-            <a href="mailto:cheng.g@bridgelabconsulting.com" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition shadow-lg">
-            Send Your Inquiry & Get Initial Quote
-            </a>
-        
-            <p class="mt-8 text-sm text-gray-500 max-w-2xl mx-auto">
-            Initial vendor recommendations and high-level cost comparisons are provided free of charge.<br>
-            Detailed quotes, comprehensive benchmarking, and ongoing project support require a signed Consulting Agreement.
-            </p>
-        
-            <p class="mt-6 text-sm text-gray-500">Guaranteed response within 24 hours</p>
-        </div>
-    </section>
-
-    <footer class="py-12 border-t border-gray-200 text-center text-gray-500 text-xs">
-        &copy; 2025 Bridge-Lab Consulting. All rights reserved.<br>
-        Independent Strategic Advisor
-    </footer>
-
-</body>
-</html>
-
-=========================================================================================
-END OF ORIGINAL WEBSITE CONTENT BACKUP
-=========================================================================================
--->
